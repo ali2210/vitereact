@@ -27,10 +27,9 @@ function TabWindow(){
 function Subwindow(){
 
     return(
-        <Box sx={{background : '#28282B', color : 'white', position : 'relative', top : '-1.5pc', width : '90pc', height : '50pc', left : '-2pc'}}>
+        <Box sx={{background : '#28282B', color : 'white', position : 'relative', top : '-1.5pc', width : '90pc', height : '80pc', left : '-2pc'}}>
             <MainTypo></MainTypo>
-            <TabWindow sx={{width : '300pc', position : 'relative', top : '2pc', left : '0pc', p : 5}}>
-            </TabWindow>
+            <TabWindow sx={{width : '300pc', position : 'relative', top : '2pc', left : '0pc', p : 5}}></TabWindow>
         </Box>
     );
 }
