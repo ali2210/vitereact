@@ -6,6 +6,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 
 
+
 import { useState } from "react";
 
 import PersonIcon from '@mui/icons-material/Person';
@@ -16,8 +17,12 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
+import AppleIcon from '@mui/icons-material/Apple';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import { Avatar, Box, FormControl, InputLabel, Stack, TextField,Button, DialogContent } from '@mui/material';
+import { Avatar, Box, FormControl, InputLabel, Stack, TextField,Button, DialogContent, List, ListItem, Divider, Switch, Hidden } from '@mui/material';
 
 
 function UserIcon(){
@@ -145,9 +150,309 @@ function Subcription(){
   );
 }
 
+function RemoveDialogue(){
+
+  return(
+    <Box>
+      <Box sx={{color : 'white', fontSize : 'x-large', position : 'relative', left : '1pc', top : '-2pc'}}>
+          <h4> Remove Payment Method ? </h4> 
+      </Box>
+      <Stack direction="row" spacing={2} sx={{fontSize : 'small', position : 'relative', top : '-2pc', left : '1pc'}}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit incidunt maiores vel tempore nisi adipisci corporis repudiandae deleniti. Ipsam aliquid quasi 
+      </Stack>
+    </Box>
+    
+  );
+}
 
 
-export default function(){
+
+function VisaOption(){
+
+  const [open, setOpen] = useState(false);
+
+  const onhandleOpen = () => {
+    setOpen(true);
+  };
+
+  const onhandleClose = () => {
+
+    setOpen(false);
+  };
+
+    return (
+      <Box sx={{color : 'blue', position : 'relative', left : '0pc'}}>
+              <h4>VISA</h4>
+              <Box sx={{color : 'black', position : 'relative', top : '-3pc', left : '5pc', fontSize : 'small'}}> **** **** **** </Box>
+              <Box sx={{color : 'black', position : 'relative',  top : '-4.2pc', left : '9.2pc', fontSize : 'medium' }}> 5967</Box>
+              <Box sx={{color : 'black', position : 'relative', top : '-4.5pc', left : '3.5pc', fontSize : 'x-small'}}> Ali Nawaz </Box>
+              <Box sx={{color : 'black', position : 'relative', top : '-6.5pc', left : '15pc', border : 1, borderRadius : 2, fontSize : 'small'}}> default </Box>
+              <Button variant="outlined" onClick={onhandleOpen} sx={{color : 'red', background : 'white', position : 'relative', top : '-8.3pc', left : '33pc', border : 1 , borderColor : 'white', textDecoration : 'underline'}}>Remove</Button>
+              <Dialog onClose={onhandleClose} open={open} aria-labelledby="customizedialogue">
+              <Box sx={{background : 'black'}}>
+                   <IconButton aria-label="close"onClick={onhandleClose} sx={{color : 'white', background : 'black', borderRadius : 0}}> <CloseIcon sx={{position : 'relative', left : '23pc', fontSize : 'small'}}/> </IconButton>
+                  </Box>
+                  <DialogContent sx={{background : 'black', color : 'white', width : '22pc'}}>
+                    <RemoveDialogue></RemoveDialogue>      
+                    <DialogActions>
+                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
+                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+                    </DialogActions>                    
+                  </DialogContent>
+              </Dialog>        
+            </Box>
+    );
+}
+
+function ApplePayOption(){
+
+  const [open, setOpen] = useState(false);
+
+  const onhandleOpen = () => {
+    setOpen(true);
+  };
+
+  const onhandleClose = () => {
+
+    setOpen(false);
+  };
+
+  return(
+            <Box sx={{color : 'black', position : 'relative', left : '0pc'}}>
+              <AppleIcon sx={{position : 'relative', top : '1.5pc', left : '-5pc '}}></AppleIcon>
+              <Box sx={{position : 'relative', top : '-1.5pc', left : '-3.5pc'}}><h4> Pay </h4></Box>
+              <Box sx={{color : 'black', position : 'relative', top : '-5pc', left : '1pc', fontSize : 'small'}}> **** **** **** </Box>
+              <Box sx={{color : 'black', position : 'relative',  top : '-6.2pc', left : '5.5pc', fontSize : 'medium' }}> 5967</Box>
+              <Box sx={{color : 'black', position : 'relative', top : '-6.5pc', left : '0.5pc', fontSize : 'x-small'}}> Button MI 48519 </Box>
+              <Button variant="outlined" sx={{color : 'green', background : 'white', position : 'relative', top : '-8.3pc', left : '22pc', border : 1 , borderColor : 'white', textDecoration : 'underline'}}> MAKE DEFAULT </Button>
+              <Button variant="outlined" onClick={onhandleOpen} sx={{color : 'red', background : 'white', position : 'relative', top : '-8.3pc', left : '24pc', border : 1 , borderColor : 'white', textDecoration : 'underline'}}>Remove</Button>
+              <Dialog onClose={onhandleClose} open={open} aria-labelledby="customizedialogue">
+                  <Box sx={{background : 'black'}}>
+                   <IconButton aria-label="close"onClick={onhandleClose} sx={{color : 'white', background : 'black', borderRadius : 0}}> <CloseIcon sx={{position : 'relative', left : '23pc', fontSize : 'small'}}/> </IconButton>
+                  </Box>
+                  <DialogContent sx={{background : 'black', color : 'white', width : '22pc'}}>
+                  <RemoveDialogue></RemoveDialogue>    
+                    <DialogActions>
+                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
+                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+                    </DialogActions>                    
+                  </DialogContent>
+              </Dialog>
+            </Box>
+  );
+}
+
+function Applepay(){
+
+    return(
+      <Button variant='outline' sx={{background : 'black', color : 'yellow', position : 'relative', top : '-2pc', left : '6pc', border : 1, borderColor : 'yellow'}}> Setup</Button>
+    );
+}
+
+function CreditDetails(){
+
+    return(
+      <Box sx={{position : 'relative', top : '-5pc'}}>
+              <FormControl>
+                <InputLabel sx={{color : 'white', position : 'relative', top : '1pc', left : '-1.5pc'}}> Name on card </InputLabel>
+                <TextField id="nameoncard" type='text' variant="filled" sx={{input : {color : 'white', position : 'relative', top : '-0pc', height : '0pc'}, width : '22pc', height : '2pc', background : '#36454F', position : 'relative', left :'-0.5pc',  top : '2.5pc'}} />
+                            <InputLabel sx={{color : 'white', position : 'relative', top : '2pc', left : '-1.5pc'}}> Card Number </InputLabel>
+                            <TextField id="cardnum" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '22pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc', left : '-0.5pc'}} />
+                            <InputLabel sx={{color : 'white', position : 'relative', top : '3pc', left : '-1.5pc'}}> Expiry </InputLabel>
+                            <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7pc', height : '2pc',background : '#36454F', position : 'relative', top : '4.3pc',left : '-0.5pc'}} />
+                            <InputLabel sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '6pc'}}> CCV </InputLabel>
+                            <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '6pc', height : '2pc',background : '#36454F', position : 'relative', top : '0.8pc', left : '7pc'}} />
+                            <InputLabel sx={{color : 'white', position : 'relative', top : '-4pc', left : '12.7pc'}}> Fixed Code </InputLabel>
+                            <TextField id="code" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7.7pc', height : '2pc',background : '#36454F', position : 'relative', top : '-2.6pc', left : '13.5pc'}} />
+                            <Box sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '-0.5pc'}}> Make this my default method </Box>
+                            <Box sx={{position : 'relative', top : '-2.5pc', left : '18.5pc'}}><Switch defaultChecked></Switch></Box>
+                            <Box sx={{color : 'white', position : 'relative', top : '-2pc', left : '-0.5pc'}}> Save this card for next time </Box>
+                            <Box sx={{position : 'relative', top : '-3.9pc', left : '18.5pc'}}><Switch></Switch></Box>
+                            <Button variant='outlined' sx={{width : '11.5pc', position : 'relative', left : '-0.5pc', top : '-2pc'}}>Cancel</Button>
+                            <Button variant='outlined' sx={{width : '11.5pc', position : 'relative', background : 'yellow', border : 1, borderColor : 'yellow', color : 'black', top : '-4.3pc', left : '11.5pc' }}> Add Card </Button>
+                        </FormControl>
+                    </Box>
+    );
+}
+
+function CreditPay(){
+
+  const [open, setOpen] = useState(false);
+
+  const onhandleOpen = () => {
+    setOpen(true);
+  };
+
+  const onhandleClose = () => {
+
+    setOpen(false);
+  };
+
+    return(
+      <Box>
+      <Button variant='outline' onClick={onhandleOpen} sx={{background : 'black', color : 'yellow', position : 'relative', top : '0pc', left : '8pc', border : 1, borderColor : 'yellow'}}> Setup</Button>
+      <Dialog onClose={onhandleClose} open={open} aria-labelledby="customizedialogue">
+          <Box sx={{background : 'black'}}>
+            <IconButton aria-label="close"onClick={onhandleClose} sx={{color : 'white', background : 'black', borderRadius : 0}}> <CloseIcon sx={{position : 'relative', left : '22pc', fontSize : 'small', top : '0pc'}}/> </IconButton>
+            </Box>
+            <DialogContent sx={{background : 'black', color : 'white', position : 'relative', left : '0pc', overflow : 'hidden'}}>
+              <Box sx={{color : 'white', fontSize : 'x-large', position : 'relative', left : '1pc', top : '-3pc'}}>
+                        <h4> Add credit or debit card  </h4> 
+              </Box>
+              <Stack direction="row" spacing={2} sx={{fontSize : 'small', position : 'relative', top : '-4.5pc', left : '3.2pc', width : '14pc', textAlign : 'justify'}}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum    
+              </Stack>
+              <CreditDetails></CreditDetails>
+            </DialogContent>
+      </Dialog>
+      </Box>
+    );
+}
+
+
+function PaymentComponent(){
+
+  const [open, setOpen] = useState(false);
+
+  const onhandleOpen = () => {
+    setOpen(true);
+  };
+
+  const onhandleClose = () => {
+
+    setOpen(false);
+  };
+
+    return(
+      <Box>
+        <Box sx={{position : 'relative', top : '5pc', left : '-21pc'}}> Payment Methods </Box>
+        <Button variant='outline' onClick={onhandleOpen} sx={{background : 'yellow', color : 'black', position : 'relative' , top : '3pc', left : '11pc'}}> Add Method </Button>
+         <Dialog onClose={onhandleClose} open={open} aria-labelledby="customizedialogue">
+                  <Box sx={{background : 'black'}}>
+                   <IconButton aria-label="close"onClick={onhandleClose} sx={{color : 'white', background : 'black', borderRadius : 0}}> <CloseIcon sx={{position : 'relative', left : '22pc', fontSize : 'medium'}}/> </IconButton>
+                  </Box>
+                  <DialogContent sx={{background : 'black', color : 'white', width : '22pc', height : '22pc'}}>
+                    <Box sx={{color : 'white', fontSize : 'x-large', position : 'relative', left : '1.5pc', top : '-1pc'}}>
+                        <h4> Add a Payment Method </h4> 
+                    </Box>
+                    <Stack direction="row" spacing={2} sx={{fontSize : 'x-small', position : 'relative', top : '-3pc', left : '1.5pc'}}>
+                        Lorem ipsum dolor sit amet consectetur  
+                    </Stack>
+                    <Box sx={{color : 'white'}}>
+                        <List>
+                          <ListItem>
+                            <AppleIcon sx={{position : 'relative', top : '-3pc', left : '-1.2pc'}}></AppleIcon>
+                            <Box sx={{position : 'relative', top : '-2.9pc', left : '-1.2pc'}}><h4> Pay </h4></Box>
+                            <Box sx={{position : 'absolute', top : '-0.6pc' , left : '4.5pc'}}> Apple Pay </Box>
+                            <List sx={{fontSize : 'x-small', position : 'relative', top : '0pc', left : '0pc'}}>
+                            <ListItem sx={{position : 'relative', top : '-0.3pc'}}>
+                              . Lorem ipsum  
+                            </ListItem>
+                            <ListItem sx={{position : 'relative', top : '-0.7pc'}}>
+                              . ipsum
+                            </ListItem>
+                          </List>
+                            <Applepay></Applepay>                       
+                          </ListItem>
+                          <Divider component="li" sx={{p: 0, position : 'absolute', left : '0pc',width: '100%',maxWidth: 360,borderRadius: 2,border: '0.6px solid',borderColor: 'divider',backgroundColor: 'grey'}}></Divider>
+                          <ListItem>
+                            <CreditCardIcon sx={{position : 'relative', top : '0pc', left : '-1pc'}}></CreditCardIcon>
+                            <Box sx={{position : 'absolute', top : '2pc' , left : '4pc'}}> Credit/Debit Card </Box>
+                            <List sx={{fontSize : 'x-small', position : 'relative', top : '2pc', left : '2pc'}}>
+                            <ListItem sx={{position : 'relative', top : '0.3pc'}}>
+                              . Lorem ipsum  
+                            </ListItem>
+                            <ListItem sx={{position : 'relative', top : '-0.7pc'}}>
+                              . ipsum
+                            </ListItem>
+                          </List>
+                            <CreditPay></CreditPay>
+                          </ListItem>
+                        </List>
+                    </Box>
+                  </DialogContent>
+          </Dialog>
+        <Stack direction="row" spacing={4} sx={{position : 'relative', top : '4pc', fontSize : 'small', left : '-5.3pc'}}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        </Stack>
+        <Box sx={{color : 'black' , borderRadius : 2, background : 'white', position : 'relative', top : '6pc', height : '5pc', width : '40pc', left : '-5pc'}}>
+          <Stack direction="row" spacing={4}>
+            <VisaOption></VisaOption>
+          </Stack>
+        </Box>
+        <Box sx={{color : 'black' , borderRadius : 2, background : 'white', position : 'relative', top : '8pc', height : '5pc', width : '40pc', left : '-5pc'}}>
+          <Stack direction="row">
+            <ApplePayOption></ApplePayOption>
+          </Stack>
+        </Box>
+      </Box>
+    );
+}
+
+
+function Sponsorships(){
+
+  const [forward, setforward] = useState(false);
+
+  const handleForwardClick = ()=>{
+
+        setforward(true);
+  };
+
+  const handleBackwardClick = () =>{
+
+      setforward(false);
+  };
+
+    return(
+      <Box visibility={forward == true? 'hidden' : 'visible'} boxShadow={3} sx={{position : 'relative', top : '6pc', border : 1, borderColor : 'white', width : '40pc', height : '5pc', borderRadius : 2}}>
+        <Box sx={{position : 'relative', top : '1pc', left : '-15pc'}}>
+            Scholarship name
+        </Box>
+        <Box sx={{position : 'relative', top : '1pc', left : '-18pc', fontSize : 'x-large'}}>$99</Box>
+        <Button variant='outlined' onClick={handleForwardClick} sx={{position : 'relative', left : '16pc', top : '-2.5pc'}}>Edit</Button>
+        <Button variant='outlined' sx={{background : 'yellow', color : 'black', position : 'relative', top : '0.5pc', left : '0pc', width : '40pc'}}>SPONSOR</Button>
+        <Box visibility={forward == false ? 'hidden' : 'visible'}>
+          <Button onClick={handleBackwardClick} sx={{color : 'white', position : 'relative', top : '-13pc', left : '-15.5pc'}}> <KeyboardBackspaceIcon sx={{position : 'relative', left : '4pc', width : '10pc'}}> </KeyboardBackspaceIcon> Manage student sponsorships </Button>
+          <Box sx={{border : 1, width : '40pc', height : '5pc', position : 'relative', top : '-12pc', borderColor : 'yellow', borderRadius : 2}}>
+            <Box sx={{position : 'relative', top : '0.5pc', left : '-16pc'}}>
+              Annually
+            </Box>
+            <Box>
+              <CheckCircleIcon sx={{color : 'green', position : 'relative', left : '18pc', top : '-1pc'}}></CheckCircleIcon>
+            </Box>
+            <Box sx={{fontSize : 'x-large', position : 'relative', top : '-1pc', left : '-16.5pc'}}>
+              $99
+            </Box>
+            <Box sx={{fontSize : 'small', position : 'relative', top : '-3pc', left : '-14pc'}}>
+              /Year
+            </Box>
+          </Box>
+          <Stack direction="row" spacing={2} sx={{position : 'relative', top : '-11pc'}}>
+            <FormControl>
+              <InputLabel sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '-16.5pc'}}> Name on card </InputLabel>
+              <TextField id="nameoncard" type='text' variant="outlined" sx={{input : {color : 'white', position : 'relative', top : '0.2pc', height : '0.5pc'}, width : '40pc', height : '2.5pc', background : '#36454F', position : 'relative', top : '1pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '1pc', left : '-16.5pc'}}> Card Number </InputLabel>
+              <TextField id="cardnum" type='text' variant="outlined"  sx={{input : {color : 'white', position: 'relative', top : '0.2pc', height : '0.5pc' }, width : '40pc', height : '2.5pc',background : '#36454F', position : 'relative', top : '2pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '2pc', left : '-18pc'}}> Expiry </InputLabel>
+              <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0.4pc', height : '0pc' }, width : '10pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '-1.5pc', left : '-7.5pc'}}> CCV </InputLabel>
+              <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '5pc', height : '2pc',background : '#36454F', position : 'relative', top : '0pc', left : '11.5pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '0pc', left : '-16.6pc'}}> Fixed Code </InputLabel>
+              <TextField id="code" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0.8pc', height : '0.7pc' }, width : '40pc', height : '2.6pc',background : '#36454F', position : 'relative', top : '1pc', left : '-0pc'}} />
+              <Button variant='outlined' sx={{position : 'relative', top : '5pc', width: '20pc' }}>Cancel Sponsorship </Button>
+              <Button variant='outlined' sx={{position : 'relative', top : '2.7pc', left : '21pc', width: '20pc', background : 'yellow', color : 'black' }}> Save </Button>
+            </FormControl>
+          </Stack>
+        </Box>
+       
+      </Box>
+    );
+}
+
+
+
+export default function VerticalTabs(){
     
     const [tabIndex, setTabIndex] = useState("one");
     const handleTabIndex = (tabIndex,newValue) => {
@@ -158,8 +463,9 @@ export default function(){
     return(
         <TabContext value={tabIndex}>
                 <TabList onChange={handleTabIndex} orientation="vertical" scrollButtons="auto" aria-label='scrollable auto tabs' TabIndicatorProps={{style : {background : 'yellow', left : 30, height : 58, fontSize : 'small'}}}  sx={{position : 'relative', top : '-2pc', height : 800,width : 500,  }}>
-                  <Tab value="one" label="Account details" sx={{color : 'white', position : 'relative', left : '-3.2pc', top : '5pc', fontSize : 'small', textTransform : 'none', '&.Mui-selected': {outline: 'none'}}} icon={
-                  <Avatar sx={{background : '#343434', color : 'yellow'}}><UserIcon sx={{color : 'white', position : 'relative', left : '0pc', fontSize : 'small'}}></UserIcon></Avatar>} iconPosition='start'></Tab>
+                  <Tab value="one" label="Account details"  icon={<Avatar sx={{background : '#343434', color : 'white'}}>
+                        <UserIcon sx={{color : 'white', position : 'relative', left : '0pc', fontSize : 'small'}}></UserIcon>
+                      </Avatar>} sx={{color : 'white', position : 'relative', left : '-3.2pc', top : '5pc', fontSize : 'small', textTransform : 'none', '&.Mui-selected': {outline: 'none'}}} iconPosition='start'></Tab>
                   <Tab value="two" label="Manage subcriptions" sx={{color : 'white', position : 'relative', left : '-2pc', top : '5pc', fontSize : 'small',  textTransform : 'none', '&.Mui-selected': {outline: 'none'}}} icon={<Avatar sx={{background : '#343434'}}>
                     <WalletIcon sx={{color : 'white', position : 'relative', left : '0pc',  fontSize : 'small'}}></WalletIcon></Avatar>} iconPosition='start'></Tab>
                   <Tab value="three" label="Payment Details" sx={{color : 'white', position : 'relative', left : '-3pc', top : '5pc', fontSize : 'small',  textTransform : 'none'}} icon={<Avatar sx={{background : '#343434'}}>
@@ -175,8 +481,12 @@ export default function(){
                 <TabPanel value="two">
                   <Subcription></Subcription>
                 </TabPanel>
-                <TabPanel value="three"></TabPanel>
-                <TabPanel value="four"></TabPanel>
+                <TabPanel value="three">
+                  <PaymentComponent></PaymentComponent>
+                </TabPanel>
+                <TabPanel value="four">
+                  <Sponsorships></Sponsorships>
+                </TabPanel>
         </TabContext>
     );
 
