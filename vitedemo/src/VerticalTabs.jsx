@@ -52,21 +52,51 @@ function Payment(){
 }
 
 function Stackcontainer(){
-    return(
+    
+
+  const handleUserCredentials =(event) => {
+    event.preventDefault();
+
+    const fname = event.target.elements.firstname.value;
+    const lname = event.target.elements.lastname.value;
+    const email = (event.target.elements.email.value);
+    const password = event.target.elements.password.value;
+
+    const emailRegex = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
+
+    if(!emailRegex.test(email)){
+
+          alert('you provide invalid email address');
+          return;
+    }
+
+    // const passRegex = new RegExp('^([@#](?=[^a-z]{4,15}$)(?=[[:alnum:]]{4,15}$)(?=.*[A-Z]{1,}.*$).+)$');
+
+    // if (!passRegex.test(password)){
+
+    //     alert(' your password is not strong enough' );
+    //     return;
+    // }
+
+    console.log("User credentials : ", fname, lname, email, password);
+
+  };
+  
+  return(
       <Stack direction="row" spacing={4}>
-        <FormControl>
+        <form onSubmit={handleUserCredentials}>
         <InputLabel sx={{color : 'white', position : 'relative', top : '0pc', width : '20pc', left : '-10pc'}}> First Name </InputLabel>
-        <TextField id="firstname" type='text' variant="filled" sx={{input : {color : 'white', }, width : '40pc', background : '#36454F', position : 'relative', top : '2pc', left : '-1.8pc'}} />
+        <TextField id="firstname" type='text' variant="filled"  sx={{input : {color : 'white', }, width : '40pc', background : '#36454F', position : 'relative', top : '1pc', left : '-5pc'}} />
         <InputLabel sx={{color : 'white', position : 'relative', top : '3pc', width : '20pc', left : '-160px'}}> Last Name </InputLabel>
-        <TextField id="lastname" type='text'  variant="filled" sx={{input : {color : 'white'}, width : '40pc',  background : '#36454F', color : 'white', position : 'relative', top : '5pc', left : '-1.8pc'}} />
+        <TextField id="lastname" type='text'  variant="filled" sx={{input : {color : 'white'}, width : '40pc',  background : '#36454F', color : 'white', position : 'relative', top : '4pc', left : '-5pc'}} />
         <InputLabel sx={{color : '#36454F', position : 'relative', top : '6pc', width : '20pc', left : '-180px'}}> Email </InputLabel>
-        <TextField id="email" type='text'  variant="filled" sx={{input : {color : '#708090'}, width : '40pc', background : '#1B1212', color : 'white', border : '1px', position : 'relative', top : '8pc', left : '-1.8pc'}} />
+        <TextField id="email" type='text'  variant="filled" sx={{input : {color : '#708090'}, width : '40pc', background : '#1B1212', color : 'white', border : '1px', position : 'relative', top : '6.5pc', left : '-5pc'}} />
         <InputLabel sx={{color : '#36454F', position : 'relative', top : '9pc', width : '20pc', left : '-165px'}}> Password </InputLabel>
-        <TextField id="password" type='password' variant="filled" sx={{ input : {color : '#1B1212'},  width : '20pc',  background : '#1B1212', color : 'white', position : 'relative', top : '11pc',left : '-1.8pc'}} />
-        <VisibilityIcon sx={{position : 'relative', top : '8.69pc', left : '15pc', color : '#708090'}}></VisibilityIcon>
-        <Button variant='outlined' sx={{position : 'relative', top : '6.1pc',height : '3.1pc', left : '20pc', color : 'yellow', background : 'black', width : '12pc', border : 2}}> Change password </Button>
-        <Button variant='outlined' sx={{position : 'relative', top : '8pc', color : 'black', background : 'yellow', width : '12pc', left : '-1.8pc'}} > Save changes </Button>
-        </FormControl>
+        <TextField id="password" type='password' variant="filled" sx={{ input : {color : '#1B1212'},  width : '20pc',  background : '#1B1212', color : 'white', position : 'relative', top : '11pc',left : '-2pc'}} />
+        <VisibilityIcon sx={{position : 'relative', top : '11.5pc', left : '-5pc', color : '#708090'}}></VisibilityIcon>
+        <Button variant='outlined' sx={{position : 'relative', top : '11pc',height : '3.5pc', left : '-1.5pc', color : 'yellow', background : 'black', width : '12pc', border : 2}}> Change password </Button>
+        <Button variant='outlined' type="submit" sx={{position : 'relative', top : '16.3pc', color : 'black', background : 'yellow', width : '12pc', left : '-35.2pc'}} > Save changes </Button>
+        </form>
       </Stack>
     );
 }
@@ -83,6 +113,19 @@ function Boxcontainer(){
 
 function SubcriptionCancel(){
 
+  const handleSubcriptionCancel = (event) => {
+
+      event.preventDefault();
+      alert('subcription cancel');
+  };
+
+
+  const handleNoAffect = (event) => {
+
+    event.preventDefault();
+  };
+
+
     return(
       <Box sx={{position : 'absolute', top : '2pc'}}>
                  <Stack direction="row" spacing={2} sx={{width : 200, position : 'absolute' , left : '5pc', top : '3pc'}}>
@@ -92,8 +135,12 @@ function SubcriptionCancel(){
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure numquam ipsam deserunt repellat incidunt blanditiis! Recusandae modi deleniti numquam corporis? Quod quam neque id, tenetur alias mollitia esse eos. Dolorum.
                   </Stack>
                   <DialogActions>
-                    <Button autoFocus variant='outlined' sx={{position : 'relative', top : '13pc', left : '-0.3pc'}}> Cancel Subcription </Button>
+                    <form onReset={handleSubcriptionCancel}>
+                      <Button autoFocus variant='outlined' type="reset" sx={{position : 'relative', top : '13pc', left : '-0.3pc'}}> Cancel Subcription </Button>
+                    </form>
+                    <form onSubmit={handleNoAffect}>
                     <Button autoFocus variant='outlined' sx={{position : 'relative', top : '13pc', left : '-0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Continue </Button>
+                    </form>
                   </DialogActions>
       </Box>
     );
@@ -111,7 +158,31 @@ function SubContract(){
   const onhandleClose = () => {
 
     setOpen(false);
-  }
+  };
+
+  const [plan,setPlan] = useState('');
+
+  const handleplan = () => {
+    
+    event.preventDefault();
+    setPlan('Anually 99.99/ anum');
+  };
+
+  const handleSubcription =(event) =>{
+
+    event.preventDefault();
+
+    if (plan.length == 0){
+
+      alert(' plan should be selected');
+      return;
+    }
+
+    console.log("My plan :", plan);
+
+  };
+
+  
 
     return(
     <Stack direction="row" spacing={2}>
@@ -125,9 +196,9 @@ function SubContract(){
           <Box sx={{color : 'white', position : 'absolute', left : '2.7pc', top : '1pc'}}> Yearly </Box> 
           <Box sx={{position : 'absolute', top : '3pc', left : '1.5pc', color : 'white', fontSize : 'x-large'}}> $ 99.99</Box>
           <Box sx={{position : 'absolute', top : '3.3pc', left : '7.2pc', fontSize : 'small', color : 'white'}}>/ Amum </Box>
-          <Button variant="outlined" sx={{width : 467, border : 1, position : 'relative', top : 90}}> Select plan </Button>
+          <Button variant="outlined" type="submit" onClick={handleplan} sx={{width : 467, border : 1, position : 'relative', top : 90}}> Select plan </Button>
         </Box>
-        <Button variant="outlined" onClick={onhandleOpen} sx={{background : 'black', color : 'yellow', position : 'relative', top : '4pc', left : '0pc', width : '20pc', border : 1}}> Cancel Subcription </Button>
+        <Button variant="outlined" onClick={onhandleOpen} sx={{background : 'black', color : 'yellow', position : 'relative', top : '4pc', left : '-10pc', width : '20pc', border : 1}}> Cancel Subcription </Button>
         <Dialog onClose={onhandleClose} open={open} aria-labelledby="customizedialogue">
           <Box sx={{background : 'black'}}>
           <IconButton aria-label="close"onClick={onhandleClose} sx={{color : 'white', background : 'black', borderRadius : 0}}> <CloseIcon sx={{position : 'relative', left : '26pc', fontSize : 'small'}}/> </IconButton>
@@ -136,7 +207,9 @@ function SubContract(){
               <SubcriptionCancel></SubcriptionCancel>
           </DialogContent>
         </Dialog>
-        <Button variant="outlined" sx={{background : 'yellow', color : 'black', position : 'relative', top : '4pc', left : '0.5pc', width : '20pc', border : 1, borderColor : 'yellow'}}> Save </Button>
+        <form onSubmit={handleSubcription}>
+        <Button variant="outlined" type="submit" sx={{background : 'yellow', color : 'black', position : 'relative', top : '1.8pc', left : '11pc', width : '20pc', border : 1, borderColor : 'yellow'}}> Save </Button>
+        </form>
       </Box> 
     </Stack>);
 }
@@ -180,6 +253,16 @@ function VisaOption(){
     setOpen(false);
   };
 
+  const handleRemove = (event) =>{
+    event.preventDefault();
+  };
+
+  const handleRemoveMethod =(event) =>{
+
+      event.preventDefault();
+      alert('Remove method selected');
+  };
+
     return (
       <Box sx={{color : 'blue', position : 'relative', left : '0pc'}}>
               <h4>VISA</h4>
@@ -195,8 +278,12 @@ function VisaOption(){
                   <DialogContent sx={{background : 'black', color : 'white', width : '22pc'}}>
                     <RemoveDialogue></RemoveDialogue>      
                     <DialogActions>
-                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
-                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+                          <form onSubmit={handleRemove}>                   
+                            <Button autoFocus variant='outlined' type="submit" sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
+                          </form>
+                          <form onSubmit={handleRemoveMethod}>
+                            <Button autoFocus variant='outlined' type="submit" sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+                          </form>
                     </DialogActions>                    
                   </DialogContent>
               </Dialog>        
@@ -217,6 +304,16 @@ function ApplePayOption(){
     setOpen(false);
   };
 
+  const handleRemove = (event) =>{
+    event.preventDefault();
+  };
+
+  const handleRemoveMethod =(event) =>{
+
+      event.preventDefault();
+      alert('Remove method selected');
+  };
+
   return(
             <Box sx={{color : 'black', position : 'relative', left : '0pc'}}>
               <AppleIcon sx={{position : 'relative', top : '1.5pc', left : '-5pc '}}></AppleIcon>
@@ -233,8 +330,13 @@ function ApplePayOption(){
                   <DialogContent sx={{background : 'black', color : 'white', width : '22pc'}}>
                   <RemoveDialogue></RemoveDialogue>    
                     <DialogActions>
-                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
-                          <Button autoFocus variant='outlined' sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+
+                          <form onSubmit={handleRemove}>
+                              <Button autoFocus variant='outlined' type="submit" sx={{position : 'relative', top : '-0.5pc', left : '0pc', width : '10pc'}}> Cancel  </Button>
+                          </form>
+                          <form onSubmit={handleRemoveMethod}>
+                              <Button autoFocus variant='outlined' type="submit" sx={{position : 'relative', top : '-0.5pc', left : '0.3pc', width : '12pc', background : 'yellow', borderColor : 'yellow', color : 'black'}}> Remove Method </Button>
+                          </form>
                     </DialogActions>                    
                   </DialogContent>
               </Dialog>
@@ -244,34 +346,58 @@ function ApplePayOption(){
 
 function Applepay(){
 
+  const handleAppleSetup = (event) =>{
+    event.preventDefault();
+    alert('Apple Pay already connected');
+  };
+
     return(
-      <Button variant='outline' sx={{background : 'black', color : 'yellow', position : 'relative', top : '-2pc', left : '6pc', border : 1, borderColor : 'yellow'}}> Setup</Button>
+      <form onSubmit={handleAppleSetup}>
+          <Button variant='outline' type="submit" sx={{background : 'black', color : 'yellow', position : 'relative', top : '-2pc', left : '6pc', border : 1, borderColor : 'yellow'}}> Setup</Button>
+      </form>
     );
 }
 
 function CreditDetails(){
 
+  const handleCreditCard = (event) => {
+
+      event.preventDefault();
+
+      const name = event.target.elements.nameoncard.value;
+      const cardnum = event.target.elements.cardnum.value;
+      const expiry = event.target.elements.cardexp.value;
+      const ccv = event.target.elements.cardccv.value;
+      const fixed = event.target.elements.code.value;
+      // const defaultmethod = event.elements.defaultmethod.value;
+      // const cardoption = event.elements.card.value;
+
+      console.log("Credit details = ", name, cardnum, expiry, ccv, fixed);
+  };
+
     return(
       <Box sx={{position : 'relative', top : '-5pc'}}>
-              <FormControl>
-                <InputLabel sx={{color : 'white', position : 'relative', top : '1pc', left : '-1.5pc'}}> Name on card </InputLabel>
+              <form onSubmit={handleCreditCard}>
+                <InputLabel sx={{color : 'white', position : 'relative', top : '2pc', left : '-0.5pc'}}> Name on card </InputLabel>
                 <TextField id="nameoncard" type='text' variant="filled" sx={{input : {color : 'white', position : 'relative', top : '-0pc', height : '0pc'}, width : '22pc', height : '2pc', background : '#36454F', position : 'relative', left :'-0.5pc',  top : '2.5pc'}} />
-                            <InputLabel sx={{color : 'white', position : 'relative', top : '2pc', left : '-1.5pc'}}> Card Number </InputLabel>
-                            <TextField id="cardnum" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '22pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc', left : '-0.5pc'}} />
-                            <InputLabel sx={{color : 'white', position : 'relative', top : '3pc', left : '-1.5pc'}}> Expiry </InputLabel>
-                            <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7pc', height : '2pc',background : '#36454F', position : 'relative', top : '4.3pc',left : '-0.5pc'}} />
-                            <InputLabel sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '6pc'}}> CCV </InputLabel>
-                            <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '6pc', height : '2pc',background : '#36454F', position : 'relative', top : '0.8pc', left : '7pc'}} />
-                            <InputLabel sx={{color : 'white', position : 'relative', top : '-4pc', left : '12.7pc'}}> Fixed Code </InputLabel>
-                            <TextField id="code" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7.7pc', height : '2pc',background : '#36454F', position : 'relative', top : '-2.6pc', left : '13.5pc'}} />
-                            <Box sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '-0.5pc'}}> Make this my default method </Box>
-                            <Box sx={{position : 'relative', top : '-2.5pc', left : '18.5pc'}}><Switch defaultChecked></Switch></Box>
-                            <Box sx={{color : 'white', position : 'relative', top : '-2pc', left : '-0.5pc'}}> Save this card for next time </Box>
-                            <Box sx={{position : 'relative', top : '-3.9pc', left : '18.5pc'}}><Switch></Switch></Box>
-                            <Button variant='outlined' sx={{width : '11.5pc', position : 'relative', left : '-0.5pc', top : '-2pc'}}>Cancel</Button>
-                            <Button variant='outlined' sx={{width : '11.5pc', position : 'relative', background : 'yellow', border : 1, borderColor : 'yellow', color : 'black', top : '-4.3pc', left : '11.5pc' }}> Add Card </Button>
-                        </FormControl>
-                    </Box>
+                <InputLabel sx={{color : 'white', position : 'relative', top : '3pc', left : '-0.5pc'}}> Card Number </InputLabel>
+                <TextField id="cardnum" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '22pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc', left : '-0.5pc'}} />
+                <InputLabel sx={{color : 'white', position : 'relative', top : '4pc', left : '-0.5pc'}}> Expiry </InputLabel>
+                <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7pc', height : '2pc',background : '#36454F', position : 'relative', top : '4.3pc',left : '-0.5pc'}} />
+                <InputLabel sx={{color : 'white', position : 'relative', top : '0.5pc', left : '6.8pc'}}> CCV </InputLabel>
+                <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '6pc', height : '2pc',background : '#36454F', position : 'relative', top : '0.8pc', left : '7pc'}} />
+                <InputLabel sx={{color : 'white', position : 'relative', top : '-3pc', left : '13.7pc'}}> Fixed Code </InputLabel>
+                <TextField id="code" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '7.7pc', height : '2pc',background : '#36454F', position : 'relative', top : '-2.6pc', left : '13.5pc'}} />
+                <Box sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '-0.5pc'}}> Make this my default method </Box>
+                <Box sx={{position : 'relative', top : '-2.5pc', left : '18.5pc'}}><Switch id='defaultmethod' defaultChecked></Switch></Box>
+                <Box sx={{color : 'white', position : 'relative', top : '-2pc', left : '-0.5pc'}}> Save this card for next time </Box>
+                <Box sx={{position : 'relative', top : '-3.9pc', left : '18.5pc'}}><Switch id="card"></Switch></Box>
+                <Button variant='outlined' type="submit" sx={{width : '11.5pc', position : 'relative', background : 'yellow', border : 1, borderColor : 'yellow', color : 'black', top : '-2.3pc', left : '11.5pc' }}> Add Card </Button>
+              </form>
+              <form>
+                  <Button variant='outlined' type="submit" sx={{width : '11.5pc', position : 'relative', left : '-0.5pc', top : '-4.5pc'}}>Cancel</Button>
+              </form> 
+            </Box>
     );
 }
 
@@ -404,6 +530,27 @@ function Sponsorships(){
       setforward(false);
   };
 
+  const handleCreditCard = (event) => {
+
+    event.preventDefault();
+
+    const name = event.target.elements.nameoncard.value;
+    const cardnum = event.target.elements.cardnum.value;
+    const expiry = event.target.elements.cardexp.value;
+    const ccv = event.target.elements.cardccv.value;
+    const fixed = event.target.elements.code.value;
+      // const defaultmethod = event.elements.defaultmethod.value;
+      // const cardoption = event.elements.card.value;
+
+    console.log("Credit details = ", name, cardnum, expiry, ccv, fixed);
+  };
+
+  const handleCancel = (event) => {
+
+      event.preventDefault();
+      alert("Cancel clicked");
+  };
+
     return(
       <Box visibility={forward == true? 'hidden' : 'visible'} boxShadow={3} sx={{position : 'relative', top : '6pc', border : 1, borderColor : 'white', width : '40pc', height : '5pc', borderRadius : 2}}>
         <Box sx={{position : 'relative', top : '1pc', left : '-15pc'}}>
@@ -429,20 +576,22 @@ function Sponsorships(){
             </Box>
           </Box>
           <Stack direction="row" spacing={2} sx={{position : 'relative', top : '-11pc'}}>
-            <FormControl>
-              <InputLabel sx={{color : 'white', position : 'relative', top : '-0.5pc', left : '-16.5pc'}}> Name on card </InputLabel>
+            <form onSubmit={handleCreditCard}>
+              <InputLabel sx={{color : 'white', position : 'relative', top : '-0pc', left : '-16.5pc'}}> Name on card </InputLabel>
               <TextField id="nameoncard" type='text' variant="outlined" sx={{input : {color : 'white', position : 'relative', top : '0.2pc', height : '0.5pc'}, width : '40pc', height : '2.5pc', background : '#36454F', position : 'relative', top : '1pc'}} />
-              <InputLabel sx={{color : 'white', position : 'relative', top : '1pc', left : '-16.5pc'}}> Card Number </InputLabel>
+              <InputLabel sx={{color : 'white', position : 'relative', top : '1.5pc', left : '-16.5pc'}}> Card Number </InputLabel>
               <TextField id="cardnum" type='text' variant="outlined"  sx={{input : {color : 'white', position: 'relative', top : '0.2pc', height : '0.5pc' }, width : '40pc', height : '2.5pc',background : '#36454F', position : 'relative', top : '2pc'}} />
-              <InputLabel sx={{color : 'white', position : 'relative', top : '2pc', left : '-18pc'}}> Expiry </InputLabel>
-              <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0.4pc', height : '0pc' }, width : '10pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc'}} />
-              <InputLabel sx={{color : 'white', position : 'relative', top : '-1.5pc', left : '-7.5pc'}}> CCV </InputLabel>
-              <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '5pc', height : '2pc',background : '#36454F', position : 'relative', top : '0pc', left : '11.5pc'}} />
-              <InputLabel sx={{color : 'white', position : 'relative', top : '0pc', left : '-16.6pc'}}> Fixed Code </InputLabel>
+              <InputLabel sx={{color : 'white', position : 'relative', top : '2.8pc', left : '-18pc'}}> Expiry </InputLabel>
+              <TextField id="cardexp" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0.4pc', height : '0pc' }, width : '10pc', height : '2pc',background : '#36454F', position : 'relative', top : '3.5pc', left : '-15pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '-0.6pc', left : '-7.5pc'}}> CCV </InputLabel>
+              <TextField id="cardccv" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0pc', height : '0pc' }, width : '5pc', height : '2pc',background : '#36454F', position : 'relative', top : '0pc', left : '-6pc'}} />
+              <InputLabel sx={{color : 'white', position : 'relative', top : '0.5pc', left : '-16.6pc'}}> Fixed Code </InputLabel>
               <TextField id="code" type='text' variant="filled"  sx={{input : {color : 'white', position: 'relative', top : '-0.8pc', height : '0.7pc' }, width : '40pc', height : '2.6pc',background : '#36454F', position : 'relative', top : '1pc', left : '-0pc'}} />
-              <Button variant='outlined' sx={{position : 'relative', top : '5pc', width: '20pc' }}>Cancel Sponsorship </Button>
-              <Button variant='outlined' sx={{position : 'relative', top : '2.7pc', left : '21pc', width: '20pc', background : 'yellow', color : 'black' }}> Save </Button>
-            </FormControl>
+              <Button variant='outlined' type="submit" sx={{position : 'relative', top : '5pc', width: '20pc', left : '-10pc' }} > Save </Button>
+              </form>
+              <form onReset={handleCancel}>
+                <Button variant='outlined' type="reset"  sx={{position : 'relative', background : 'yellow', color : 'black', top : '23.8pc', left : '-20pc', width : '20pc' }} >Cancel Sponsorship </Button>
+              </form>
           </Stack>
         </Box>
        
