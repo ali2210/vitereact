@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import MyAppbar from './Appbar.jsx';
 import MainTypo from './MainTypography.jsx';
 import { Stack } from '@mui/material';
-import VerticalTabs from './VerticalTabs.jsx';
+import VerticalTabs  from './VerticalTabs.jsx';
 
 
 function TabStackWindow(){
